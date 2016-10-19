@@ -1,41 +1,32 @@
 # Script generated with Bloom
-pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
-url='http://www.ros.org/wiki/catkin'
+pkgdesc="ROS - @(Description)"
+@[if Homepage and Homepage != '']url='@(Homepage)'@[end if]
 
-pkgname='ros-minimalist-catkin'
-pkgver='0.7.4'
-pkgrel='5'
+pkgname='@(Package)'
+pkgver='@(Version)'
+pkgrel='@(Pkgrel)'
 arch=('any')
-license=('BSD')
+license=('@(License)')
 
-makedepends=('cmake'
-'python2'
-'python2-catkin-pkg>0.2.9'
-'python2-empy'
-'python2-mock'
-'python2-nose'
-)
+makedepends=(@[for p in BuildDepends]'@p'@\n@[end for])
 
-depends=('cmake'
-'gtest'
-'python2'
-'python2-catkin-pkg>0.2.9'
-'python2-empy'
-'python2-nose'
-)
+depends=(@[for p in Depends]'@p'@\n@[end for])
 
-conflicts=()
-replaces=()
+conflicts=(@[for p in Conflicts]'@p'@\n@[end for])
+replaces=(@[for p in Replaces]'@p'@\n@[end for])
 
-_tag=release/minimalist/catkin/${pkgver}-${pkgrel}
-_dir=catkin
-source=("${_dir}"::"git+https://github.com/ros-gbp/catkin-release.git"#tag=${_tag})
-md5sums=('SKIP')
+_dir=@(Name)
+source=()
+md5sums=()
+
+prepare() {
+    cp -R $startdir/@(Name) $srcdir/@(Name)
+}
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/minimalist/setup.bash ] && source /opt/ros/minimalist/setup.bash
+  [ -f /opt/ros/@(ROSDistribution)/setup.bash ] && source /opt/ros/@(ROSDistribution)/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
@@ -48,7 +39,7 @@ build() {
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/minimalist \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/@(ROSDistribution) \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
