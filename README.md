@@ -1,3 +1,26 @@
+## catkin (minimalist) - 0.7.4-9
+
+The packages in the `catkin` repository were released into the `minimalist` distro by running `/home/greg/bloom-prefix/bin/bloom-release --rosdistro minimalist --track minimalist catkin --debug` on `Sun, 30 Oct 2016 14:51:34 -0000`
+
+The `catkin` package was released.
+
+Version of package(s) in repository `catkin`:
+
+- upstream repository: git@github.com:ros/catkin.git
+- release repository: https://github.com/gdlg/catkin-release.git
+- rosdistro version: `0.7.4-6`
+- old version: `0.7.4-8`
+- new version: `0.7.4-9`
+
+Versions of tools used:
+
+- bloom version: `0.5.22`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.5`
+- rosdistro version: `0.4.7`
+- vcstools version: `0.1.39`
+
+
 ## catkin (minimalist) - 0.7.4-8
 
 The packages in the `catkin` repository were released into the `minimalist` distro by running `/home/greg/bloom-prefix/bin/bloom-release --rosdistro minimalist --track minimalist catkin` on `Sun, 30 Oct 2016 14:42:35 -0000`
